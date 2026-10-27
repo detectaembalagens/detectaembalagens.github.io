@@ -1,0 +1,11 @@
+Modelos de remoção de fundo usados no navegador (EngRevFacaEmbalagem)
+
+isnet-general-use.int8.onnx
+  ISNet / DIS — "Highly Accurate Dichotomous Image Segmentation" (Qin et al., ECCV 2022)
+  Pesos via rembg (danielgatis/rembg, MIT). Licença do modelo: Apache-2.0.
+  Quantizado para int8 (pesos) neste projeto: IoU ≥ 0,99 contra o fp32 nas fotos de referência.
+
+u2netp.onnx
+  U²-Net (versão leve) — Qin et al., Pattern Recognition 2020. Licença: Apache-2.0.
+
+ONNX Runtime Web (static/ort/) — Microsoft, licença MIT.
