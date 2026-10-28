@@ -1,4 +1,4 @@
-Modelos de remoção de fundo usados no navegador (EngRevFacaEmbalagem)
+Modelos de visão usados no navegador (EngRevFacaEmbalagem)
 
 isnet-general-use.int8.onnx
   ISNet / DIS — "Highly Accurate Dichotomous Image Segmentation" (Qin et al., ECCV 2022)
@@ -8,4 +8,15 @@ isnet-general-use.int8.onnx
 u2netp.onnx
   U²-Net (versão leve) — Qin et al., Pattern Recognition 2020. Licença: Apache-2.0.
 
+slimsam_encoder_q.onnx / slimsam_decoder_q.onnx
+  SlimSAM-77 (Chen et al., "0.1% Data Makes Segment Anything Slim", NeurIPS 2024), destilado do
+  Segment Anything (Meta, Apache-2.0). Exportação ONNX quantizada: Xenova/slimsam-77-uniform.
+  Licença: Apache-2.0. Uso: refino do recorte por clique.
+
+depth_anything_v2_small_int8.onnx
+  Depth Anything V2 Small (Yang et al., NeurIPS 2024). Exportação: onnx-community/
+  depth-anything-v2-small. Licença: Apache-2.0 (somente a versão Small; Base/Large são
+  CC-BY-NC e NÃO são usadas). Uso: desempate de interpretação da caixa montada.
+
 ONNX Runtime Web (static/ort/) — Microsoft, licença MIT.
+coi-serviceworker (static/coi-serviceworker.js) — Guido Zuidhof, licença MIT.

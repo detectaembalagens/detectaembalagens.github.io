@@ -13,6 +13,52 @@ export class Lote {
         wasm.__wbg_lote_free(ptr, 0);
     }
     /**
+     * CAIXA MONTADA por foto: imagem + máscara do objeto (1 byte/pixel) e, opcionalmente, a
+     * disparidade do Depth Anything V2 (vazia = sem desempate) → cuboide → faca da família.
+     * @param {string} nome
+     * @param {Uint8Array} bytes
+     * @param {Uint8Array} mascara
+     * @param {Float32Array} disparidade
+     * @param {number} largura
+     * @param {number} altura
+     * @param {string} opcoes
+     * @returns {string}
+     */
+    adicionar_caixa_montada(nome, bytes, mascara, disparidade, largura, altura, opcoes) {
+        let deferred7_0;
+        let deferred7_1;
+        try {
+            const retptr = wasm.__wbindgen_add_to_stack_pointer(-16);
+            const ptr0 = passStringToWasm0(nome, wasm.__wbindgen_export, wasm.__wbindgen_export2);
+            const len0 = WASM_VECTOR_LEN;
+            const ptr1 = passArray8ToWasm0(bytes, wasm.__wbindgen_export);
+            const len1 = WASM_VECTOR_LEN;
+            const ptr2 = passArray8ToWasm0(mascara, wasm.__wbindgen_export);
+            const len2 = WASM_VECTOR_LEN;
+            const ptr3 = passArrayF32ToWasm0(disparidade, wasm.__wbindgen_export);
+            const len3 = WASM_VECTOR_LEN;
+            const ptr4 = passStringToWasm0(opcoes, wasm.__wbindgen_export, wasm.__wbindgen_export2);
+            const len4 = WASM_VECTOR_LEN;
+            wasm.lote_adicionar_caixa_montada(retptr, this.__wbg_ptr, ptr0, len0, ptr1, len1, ptr2, len2, ptr3, len3, largura, altura, ptr4, len4);
+            var r0 = getDataViewMemory0().getInt32(retptr + 4 * 0, true);
+            var r1 = getDataViewMemory0().getInt32(retptr + 4 * 1, true);
+            var r2 = getDataViewMemory0().getInt32(retptr + 4 * 2, true);
+            var r3 = getDataViewMemory0().getInt32(retptr + 4 * 3, true);
+            var ptr6 = r0;
+            var len6 = r1;
+            if (r3) {
+                ptr6 = 0; len6 = 0;
+                throw takeObject(r2);
+            }
+            deferred7_0 = ptr6;
+            deferred7_1 = len6;
+            return getStringFromWasm0(ptr6, len6);
+        } finally {
+            wasm.__wbindgen_add_to_stack_pointer(16);
+            wasm.__wbindgen_export3(deferred7_0, deferred7_1, 1);
+        }
+    }
+    /**
      * Foto (JPEG/PNG/WebP decodificada pelo navegador para PNG/JPEG) → resumo JSON.
      * @param {string} nome
      * @param {Uint8Array} bytes
@@ -93,6 +139,43 @@ export class Lote {
         }
     }
     /**
+     * Malha 3D (OBJ, texto) → planificação por desdobramento. `opcoes`: escala_mm, abas_mm.
+     * @param {string} nome
+     * @param {string} obj
+     * @param {string} opcoes
+     * @returns {string}
+     */
+    adicionar_malha(nome, obj, opcoes) {
+        let deferred5_0;
+        let deferred5_1;
+        try {
+            const retptr = wasm.__wbindgen_add_to_stack_pointer(-16);
+            const ptr0 = passStringToWasm0(nome, wasm.__wbindgen_export, wasm.__wbindgen_export2);
+            const len0 = WASM_VECTOR_LEN;
+            const ptr1 = passStringToWasm0(obj, wasm.__wbindgen_export, wasm.__wbindgen_export2);
+            const len1 = WASM_VECTOR_LEN;
+            const ptr2 = passStringToWasm0(opcoes, wasm.__wbindgen_export, wasm.__wbindgen_export2);
+            const len2 = WASM_VECTOR_LEN;
+            wasm.lote_adicionar_malha(retptr, this.__wbg_ptr, ptr0, len0, ptr1, len1, ptr2, len2);
+            var r0 = getDataViewMemory0().getInt32(retptr + 4 * 0, true);
+            var r1 = getDataViewMemory0().getInt32(retptr + 4 * 1, true);
+            var r2 = getDataViewMemory0().getInt32(retptr + 4 * 2, true);
+            var r3 = getDataViewMemory0().getInt32(retptr + 4 * 3, true);
+            var ptr4 = r0;
+            var len4 = r1;
+            if (r3) {
+                ptr4 = 0; len4 = 0;
+                throw takeObject(r2);
+            }
+            deferred5_0 = ptr4;
+            deferred5_1 = len4;
+            return getStringFromWasm0(ptr4, len4);
+        } finally {
+            wasm.__wbindgen_add_to_stack_pointer(16);
+            wasm.__wbindgen_export3(deferred5_0, deferred5_1, 1);
+        }
+    }
+    /**
      * Modelo paramétrico (sem imagem).
      * @param {string} modelo
      * @param {string} params
@@ -111,6 +194,43 @@ export class Lote {
             const ptr2 = passStringToWasm0(opcoes, wasm.__wbindgen_export, wasm.__wbindgen_export2);
             const len2 = WASM_VECTOR_LEN;
             wasm.lote_adicionar_modelo(retptr, this.__wbg_ptr, ptr0, len0, ptr1, len1, ptr2, len2);
+            var r0 = getDataViewMemory0().getInt32(retptr + 4 * 0, true);
+            var r1 = getDataViewMemory0().getInt32(retptr + 4 * 1, true);
+            var r2 = getDataViewMemory0().getInt32(retptr + 4 * 2, true);
+            var r3 = getDataViewMemory0().getInt32(retptr + 4 * 3, true);
+            var ptr4 = r0;
+            var len4 = r1;
+            if (r3) {
+                ptr4 = 0; len4 = 0;
+                throw takeObject(r2);
+            }
+            deferred5_0 = ptr4;
+            deferred5_1 = len4;
+            return getStringFromWasm0(ptr4, len4);
+        } finally {
+            wasm.__wbindgen_add_to_stack_pointer(16);
+            wasm.__wbindgen_export3(deferred5_0, deferred5_1, 1);
+        }
+    }
+    /**
+     * Nuvem de pontos (PLY) → cuboide → faca da família (`familia`, `escala_mm` em opcoes).
+     * @param {string} nome
+     * @param {Uint8Array} ply
+     * @param {string} opcoes
+     * @returns {string}
+     */
+    adicionar_nuvem(nome, ply, opcoes) {
+        let deferred5_0;
+        let deferred5_1;
+        try {
+            const retptr = wasm.__wbindgen_add_to_stack_pointer(-16);
+            const ptr0 = passStringToWasm0(nome, wasm.__wbindgen_export, wasm.__wbindgen_export2);
+            const len0 = WASM_VECTOR_LEN;
+            const ptr1 = passArray8ToWasm0(ply, wasm.__wbindgen_export);
+            const len1 = WASM_VECTOR_LEN;
+            const ptr2 = passStringToWasm0(opcoes, wasm.__wbindgen_export, wasm.__wbindgen_export2);
+            const len2 = WASM_VECTOR_LEN;
+            wasm.lote_adicionar_nuvem(retptr, this.__wbg_ptr, ptr0, len0, ptr1, len1, ptr2, len2);
             var r0 = getDataViewMemory0().getInt32(retptr + 4 * 0, true);
             var r1 = getDataViewMemory0().getInt32(retptr + 4 * 1, true);
             var r2 = getDataViewMemory0().getInt32(retptr + 4 * 2, true);
@@ -190,6 +310,96 @@ export class Lote {
             wasm.__wbindgen_add_to_stack_pointer(16);
         }
     }
+    /**
+     * ENCAIXE de todas as facas do lote em escala real (cada uma com `quantidade` cópias;
+     * 0 = uma de cada e completa a folha). Arquivos entram no .zip em "encaixe_lote/".
+     * @param {string} opcoes
+     * @returns {string}
+     */
+    encaixar_lote(opcoes) {
+        let deferred3_0;
+        let deferred3_1;
+        try {
+            const retptr = wasm.__wbindgen_add_to_stack_pointer(-16);
+            const ptr0 = passStringToWasm0(opcoes, wasm.__wbindgen_export, wasm.__wbindgen_export2);
+            const len0 = WASM_VECTOR_LEN;
+            wasm.lote_encaixar_lote(retptr, this.__wbg_ptr, ptr0, len0);
+            var r0 = getDataViewMemory0().getInt32(retptr + 4 * 0, true);
+            var r1 = getDataViewMemory0().getInt32(retptr + 4 * 1, true);
+            var r2 = getDataViewMemory0().getInt32(retptr + 4 * 2, true);
+            var r3 = getDataViewMemory0().getInt32(retptr + 4 * 3, true);
+            var ptr2 = r0;
+            var len2 = r1;
+            if (r3) {
+                ptr2 = 0; len2 = 0;
+                throw takeObject(r2);
+            }
+            deferred3_0 = ptr2;
+            deferred3_1 = len2;
+            return getStringFromWasm0(ptr2, len2);
+        } finally {
+            wasm.__wbindgen_add_to_stack_pointer(16);
+            wasm.__wbindgen_export3(deferred3_0, deferred3_1, 1);
+        }
+    }
+    /**
+     * Exporta o item `i` (pool de workers → coordenador): [resumo, nomes, dados[], faca|null].
+     * @param {number} i
+     * @returns {Array<any>}
+     */
+    exportar_item(i) {
+        try {
+            const retptr = wasm.__wbindgen_add_to_stack_pointer(-16);
+            wasm.lote_exportar_item(retptr, this.__wbg_ptr, i);
+            var r0 = getDataViewMemory0().getInt32(retptr + 4 * 0, true);
+            var r1 = getDataViewMemory0().getInt32(retptr + 4 * 1, true);
+            var r2 = getDataViewMemory0().getInt32(retptr + 4 * 2, true);
+            if (r2) {
+                throw takeObject(r1);
+            }
+            return takeObject(r0);
+        } finally {
+            wasm.__wbindgen_add_to_stack_pointer(16);
+        }
+    }
+    /**
+     * Importa um item exportado por outro worker. Devolve o resumo com a pasta final.
+     * @param {string} resumo
+     * @param {string} nomes
+     * @param {Array<any>} dados
+     * @param {string | null} [faca]
+     * @returns {string}
+     */
+    importar_item(resumo, nomes, dados, faca) {
+        let deferred5_0;
+        let deferred5_1;
+        try {
+            const retptr = wasm.__wbindgen_add_to_stack_pointer(-16);
+            const ptr0 = passStringToWasm0(resumo, wasm.__wbindgen_export, wasm.__wbindgen_export2);
+            const len0 = WASM_VECTOR_LEN;
+            const ptr1 = passStringToWasm0(nomes, wasm.__wbindgen_export, wasm.__wbindgen_export2);
+            const len1 = WASM_VECTOR_LEN;
+            var ptr2 = isLikeNone(faca) ? 0 : passStringToWasm0(faca, wasm.__wbindgen_export, wasm.__wbindgen_export2);
+            var len2 = WASM_VECTOR_LEN;
+            wasm.lote_importar_item(retptr, this.__wbg_ptr, ptr0, len0, ptr1, len1, addHeapObject(dados), ptr2, len2);
+            var r0 = getDataViewMemory0().getInt32(retptr + 4 * 0, true);
+            var r1 = getDataViewMemory0().getInt32(retptr + 4 * 1, true);
+            var r2 = getDataViewMemory0().getInt32(retptr + 4 * 2, true);
+            var r3 = getDataViewMemory0().getInt32(retptr + 4 * 3, true);
+            var ptr4 = r0;
+            var len4 = r1;
+            if (r3) {
+                ptr4 = 0; len4 = 0;
+                throw takeObject(r2);
+            }
+            deferred5_0 = ptr4;
+            deferred5_1 = len4;
+            return getStringFromWasm0(ptr4, len4);
+        } finally {
+            wasm.__wbindgen_add_to_stack_pointer(16);
+            wasm.__wbindgen_export3(deferred5_0, deferred5_1, 1);
+        }
+    }
     limpar() {
         wasm.lote_limpar(this.__wbg_ptr);
     }
@@ -227,6 +437,15 @@ export class Lote {
         return ret >>> 0;
     }
     /**
+     * Remove o item `i` (ex.: reanálise depois de refinar o recorte por clique).
+     * @param {number} i
+     * @returns {boolean}
+     */
+    remover(i) {
+        const ret = wasm.lote_remover(this.__wbg_ptr, i);
+        return ret !== 0;
+    }
+    /**
      * .zip com todas as facas do lote + LEIA-ME + catálogo do lote.
      * @returns {Uint8Array}
      */
@@ -250,6 +469,25 @@ export class Lote {
     }
 }
 if (Symbol.dispose) Lote.prototype[Symbol.dispose] = Lote.prototype.free;
+
+/**
+ * Folha A4 de marcadores ArUco 4×4_50 (PDF) para escala métrica automática.
+ * @param {number} lado_mm
+ * @returns {Uint8Array}
+ */
+export function marcadores_pdf(lado_mm) {
+    try {
+        const retptr = wasm.__wbindgen_add_to_stack_pointer(-16);
+        wasm.marcadores_pdf(retptr, lado_mm);
+        var r0 = getDataViewMemory0().getInt32(retptr + 4 * 0, true);
+        var r1 = getDataViewMemory0().getInt32(retptr + 4 * 1, true);
+        var v1 = getArrayU8FromWasm0(r0, r1).slice();
+        wasm.__wbindgen_export3(r0, r1 * 1, 1);
+        return v1;
+    } finally {
+        wasm.__wbindgen_add_to_stack_pointer(16);
+    }
+}
 
 /**
  * @returns {string}
@@ -312,8 +550,20 @@ function __wbg_get_imports() {
             const ret = new Uint8Array(getObject(arg0));
             return addHeapObject(ret);
         },
+        __wbg_new_ee2291f50781bf1d: function() {
+            const ret = new Array();
+            return addHeapObject(ret);
+        },
+        __wbg_new_from_slice_9a868026ffa4208a: function(arg0, arg1) {
+            const ret = new Uint8Array(getArrayU8FromWasm0(arg0, arg1));
+            return addHeapObject(ret);
+        },
         __wbg_prototypesetcall_bc27214492979395: function(arg0, arg1, arg2) {
             Uint8Array.prototype.set.call(getArrayU8FromWasm0(arg0, arg1), getObject(arg2));
+        },
+        __wbg_push_2baf45db356cf468: function(arg0, arg1) {
+            const ret = getObject(arg0).push(getObject(arg1));
+            return ret;
         },
         __wbindgen_generic_0000000000000001: function(arg0, arg1) {
             // Cast intrinsic for `Ref(String) -> Externref`.
@@ -362,6 +612,14 @@ function getDataViewMemory0() {
     return cachedDataViewMemory0;
 }
 
+let cachedFloat32ArrayMemory0 = null;
+function getFloat32ArrayMemory0() {
+    if (cachedFloat32ArrayMemory0 === null || cachedFloat32ArrayMemory0.byteLength === 0) {
+        cachedFloat32ArrayMemory0 = new Float32Array(wasm.memory.buffer);
+    }
+    return cachedFloat32ArrayMemory0;
+}
+
 function getStringFromWasm0(ptr, len) {
     return decodeText(ptr >>> 0, len);
 }
@@ -381,9 +639,20 @@ heap.push(undefined, null, true, false);
 
 let heap_next = heap.length;
 
+function isLikeNone(x) {
+    return x === undefined || x === null;
+}
+
 function passArray8ToWasm0(arg, malloc) {
     const ptr = malloc(arg.length * 1, 1) >>> 0;
     getUint8ArrayMemory0().set(arg, ptr / 1);
+    WASM_VECTOR_LEN = arg.length;
+    return ptr;
+}
+
+function passArrayF32ToWasm0(arg, malloc) {
+    const ptr = malloc(arg.length * 4, 4) >>> 0;
+    getFloat32ArrayMemory0().set(arg, ptr / 4);
     WASM_VECTOR_LEN = arg.length;
     return ptr;
 }
@@ -466,6 +735,7 @@ function __wbg_finalize_init(instance, module) {
     wasm = instance.exports;
     wasmModule = module;
     cachedDataViewMemory0 = null;
+    cachedFloat32ArrayMemory0 = null;
     cachedUint8ArrayMemory0 = null;
     return wasm;
 }
